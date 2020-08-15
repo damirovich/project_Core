@@ -1,0 +1,28 @@
+﻿@model SUBDCORE.Models.UnitOfMeasure
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4>Удаление Единицы измерении</h4>
+<h5>Вы действительно хотите удлить это ?</h5>
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                <label>Наименование Единицы измерении</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Names)
+                </h4>
+            </td>
+        </tr>
+    </table>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdUnitOfmeasure" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-action="Index">Вернуться назад</a>
+    </div>
+</div>

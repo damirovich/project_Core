@@ -1,0 +1,63 @@
+﻿@model SUBDCORE.Models.Payroll
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h5>Вы действительно хотите удалить это?</h5>
+<div>
+    <table class="table">
+        <tr>
+            <td>
+                <label>Сотрудник</label>
+                <h6>
+                    @Html.DisplayFor(model => model.IdEmployeeNavigation.FullName)
+                </h6>
+            </td>
+            <td>
+                <label>Год</label>
+                <h6>
+                    @Html.DisplayFor(model => model.YearsNavigation.YearsName)
+                </h6>
+            </td>
+            <td>
+                <label>Месяц</label>
+                <h6>
+                    @Html.DisplayFor(model => model.MonthNavigation.MonthName)
+                </h6>
+            </td>
+            <td>
+                <label>Колличество работ</label>
+                <h6>
+                    @Html.DisplayFor(model => model.WorkPerformed)
+                </h6>
+            </td>
+            <td>
+                <label>Сумма зарплаты</label>
+                <h6>
+                    @Html.DisplayFor(model => model.SummaSalary)
+                </h6>
+            </td>
+            <td>
+                <label>Выданная зарплата</label>
+                <h6>
+                    @Html.DisplayFor(model => model.SumSalary)
+                </h6>
+            </td>
+            <td>
+                <label>Дата выдачи</label>
+                <h6>
+                    @Html.DisplayFor(model => model.DataPayroll)
+                </h6>
+            </td>
+        </tr>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdSalary" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-action="Index">Вернуться назад</a>
+    </div>
+</div>

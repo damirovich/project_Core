@@ -1,0 +1,69 @@
+﻿@model SUBDCORE.Models.LoanRepayment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LoanRepayment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdLoanRepayment" />
+            <div class="form-group">
+                <label asp-for="CreaditId" class="control-label"></label>
+                <select asp-for="CreaditId" class="form-control" asp-items="ViewBag.CreaditId"></select>
+                <span asp-validation-for="CreaditId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthForPay" class="control-label"></label>
+                <select asp-for="MonthForPay" class="form-control" asp-items="ViewBag.MonthForPay"></select>
+                <span asp-validation-for="MonthForPay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearForPay" class="control-label"></label>
+                <input asp-for="YearForPay" class="form-control" />
+                <span asp-validation-for="YearForPay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfPay" class="control-label"></label>
+                <input asp-for="DateOfPay" class="form-control" />
+                <span asp-validation-for="DateOfPay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthlyPayment" class="control-label"></label>
+                <input asp-for="MonthlyPayment" class="form-control" />
+                <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpiredDays" class="control-label"></label>
+                <input asp-for="ExpiredDays" class="form-control" />
+                <span asp-validation-for="ExpiredDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fine" class="control-label"></label>
+                <input asp-for="Fine" class="form-control" />
+                <span asp-validation-for="Fine" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPayment" class="control-label"></label>
+                <input asp-for="TotalPayment" class="form-control" />
+                <span asp-validation-for="TotalPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,47 @@
+﻿@model SUBDCORE.Models.Manufacture
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h3>Удаление Записи о Производстве</h3>
+
+<h4>Вы действительно хотите удалить Это?</h4>
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                <label>Наименование продукта</label>
+                <h4>
+                    @Html.DisplayFor(model => model.ProductionNavigation.Names)
+                </h4>
+            </td>
+            <td>
+                <label>Колличество</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Quantity)
+                </h4>
+            </td>
+            <td>
+                <label>Дата производство</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Date)
+                </h4>
+            </td>
+            <td>
+                <label>Сотрудник</label>
+                <h4>
+                    @Html.DisplayFor(model => model.EmployeesNavigation.FullName)
+                </h4>
+            </td>
+        </tr>
+    </table>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdManufacture" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-action="Index">Вернуться назад</a>
+    </div>
+</div>
+

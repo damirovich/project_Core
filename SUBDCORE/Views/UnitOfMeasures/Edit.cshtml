@@ -1,0 +1,30 @@
+﻿@model SUBDCORE.Models.UnitOfMeasure
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Редактирование</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdUnitOfmeasure" />
+            <div class="form-group">
+                <label>Наименование Единицы измерении</label>
+                <input asp-for="Names" class="form-control" />
+                <span asp-validation-for="Names" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+

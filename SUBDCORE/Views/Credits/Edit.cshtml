@@ -1,0 +1,52 @@
+﻿@model SUBDCORE.Models.Credits
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h5>Редактирование записи</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCredits" />
+            <div class="form-group">
+                <label>Наименование Банка</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Сумма кредита</label>
+                <input asp-for="CreaditAmount" class="form-control" />
+                <span asp-validation-for="CreaditAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Процентная ставка</label>
+                <input asp-for="InterestRate" class="form-control" />
+                <span asp-validation-for="InterestRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Срок кредита</label>
+                <input asp-for="CreditTerm" class="form-control" />
+                <span asp-validation-for="CreditTerm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Дата взяите кредита</label>
+                <input asp-for="DateOfIssue" class="form-control" />
+                <span asp-validation-for="DateOfIssue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

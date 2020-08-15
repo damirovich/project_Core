@@ -1,0 +1,53 @@
+﻿@model SUBDCORE.Models.ProductSales
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Удаление Записи</h3>
+
+<h4>Вы действительно хотите удалить это ?</h4>
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                <label>Наименование продукта</label>
+                <h4>
+                    @Html.DisplayFor(model => model.FinishedProductNavigation.Names)
+                </h4>
+            </td>
+            <td>
+                <label>Колличество</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Quantity)
+                </h4>
+            </td>
+            <td>
+                <label>Сумма</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Summ)
+                </h4>
+            </td>
+            <td>
+                <label>Дата продажи</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Date)
+                </h4>
+            </td>
+            <td>
+                <label>Сотрудник</label>
+                <h4>
+                    @Html.DisplayFor(model => model.EmployeesNavigation.FullName)
+                </h4>
+            </td>
+        </tr>
+    </table>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdProductSales" />
+        <input type="submit" value="Удалить" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-action="Index">Вернуться назад</a>
+    </div>
+</div>

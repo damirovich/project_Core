@@ -1,0 +1,55 @@
+﻿@model SUBDCORE.Models.Payroll
+
+
+@{
+    ViewData["Title"] = "CreateXP";
+}
+
+<h2>Выплата</h2>
+
+<div>
+    <table class="table">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Сотрудник</label>
+                        <select asp-for="IdEmployee" class="form-control" asp-items="ViewBag.IdEmployee"></select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>Год</label>
+                        <select asp-for="Years" class="form-control" asp-items="ViewBag.Years"></select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>Месяц</label>
+                        <select asp-for="Month" class="form-control" asp-items="ViewBag.Month"></select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>Оплата</label>
+                        <input asp-for="SumSalary" class="form-control" />
+                        <span asp-validation-for="SumSalary" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>______________________</label>  <br />
+                        <input type="submit" value="Выдать зарплату" class="btn btn-primary" />
+                    </div>
+                </td>
+
+            </tr>
+        </form>
+
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SUBDCORE.Models.ProductSales>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+@*для icon*@
+<script src="https://kit.fontawesome.com/7bdebba20f.js" crossorigin="anonymous"></script>
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i>Оформить заказ</a>
+</p>
+@(Html
+    .Grid(Model)
+    .Build(colums=>
+    {
+        colums.Add(ms => ms.FinishedProductNavigation.Names).Titled("Наименование продукта").Sortable(true).Filterable(true);
+        colums.Add(ms => ms.Quantity).Titled("Колличество").Sortable(true).Filterable(false);
+        colums.Add(ms => ms.Summ).Titled("Сумма").Sortable(true).Filterable(true);
+        colums.Add(ms => ms.Date).Titled("Дата продажи").Sortable(true).Filterable(true);
+        colums.Add(ms => ms.EmployeesNavigation.FullName).Titled("Сотрудник").Sortable(true).Filterable(true);
+        colums.Add(model => $"<a href='" + @Url.Action("Edit", new { id = model.IdProductSales }) + "' class='btn btn-warning'><i class='fas fa-edit'></i></a>").Encoded(false);
+        colums.Add(model => $"<a href='" + @Url.Action("Delete", new { id = model.IdProductSales }) + "' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a>").Encoded(false);
+
+    })
+    .Using(GridFilterMode.Header)
+    .Empty("Данные не найдены")
+    .Pageable(pager =>
+    {
+        pager.PageSizes = new Dictionary<int, string> { { 0, "Все" }, { 5, "5" }, { 10, "10" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+    }))
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>

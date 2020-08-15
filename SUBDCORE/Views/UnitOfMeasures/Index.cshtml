@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SUBDCORE.Models.UnitOfMeasure>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<
+<link href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+
+<script src="https://kit.fontawesome.com/7bdebba20f.js" crossorigin="anonymous"></script>
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="fas fa-plus"></i>Добавить единица измерения
+    </a>
+</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label>Наименование Единицы измерении</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Names)
+                    </td>
+                    <td>
+                        <a class='btn btn-warning' asp-action="Edit" asp-route-id="@item.IdUnitOfmeasure"><i class='fas fa-edit'></i> Редактирование</a>
+                        <a class='btn btn-danger' asp-action="Delete" asp-route-id="@item.IdUnitOfmeasure"><i class='fas fa-trash-alt'></i> Удаление</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,39 @@
+﻿@model SUBDCORE.Models.Budget
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Изменить Бюджет</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdBudget" />
+            <div class="form-group">
+                <label>Общая сумма Бюджета</label>
+                <input asp-for="BudgetSum" class="form-control" />
+                <span asp-validation-for="BudgetSum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Процент продажи продукта</label>
+                <input asp-for="Prosent" class="form-control" />
+                <span asp-validation-for="Prosent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Бонус зарплты виде процента</label>
+                <input asp-for="ProsentSalary" class="form-control" />
+                <span asp-validation-for="ProsentSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+

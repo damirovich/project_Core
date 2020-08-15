@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SUBDCORE.Models.Budget>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="https://kit.fontawesome.com/7bdebba20f.js" crossorigin="anonymous"></script>
+<h3>Бюджет Пекарни</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label>Общая сумма бюджета</label>
+            </th>
+            <th>
+                <label>Процент продажи %</label>
+            </th>
+            <th>
+                <label>Бонус зарплаты %</label>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BudgetSum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prosent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProsentSalary)
+                </td>
+                <td>
+                    <a class='btn btn-warning' asp-action="Edit" asp-route-id="@item.IdBudget"><i class='fas fa-edit'></i> Изменить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

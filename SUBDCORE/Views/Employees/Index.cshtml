@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SUBDCORE.Models.Employees>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+@*для icon*@
+<script src="https://kit.fontawesome.com/7bdebba20f.js" crossorigin="anonymous"></script>
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-user-plus"></i>Добавление сотрудника</a>
+</p>
+@(Html
+    .Grid(Model)
+    .Build(columns=>
+    {
+    columns.Add(models => models.FullName).Titled("ФИО").Sortable(true).Filterable(GridFilterCase.Lower);
+    columns.Add(models => models.Salary).Titled("Оплата").Sortable(true).Filterable(GridFilterType.Multi);
+    columns.Add(models => models.Address).Titled("Адрес проживания").Sortable(true).Filterable(GridFilterCase.Lower);
+    columns.Add(models => models.PhoneNumber).Titled("Номер телефона").Sortable(false).Filterable(false);
+    columns.Add(models => models.PositionNavigation.Position1).Titled("Дожность").Sortable(false).Filterable(GridFilterCase.Lower);
+        columns.Add(model => $"<a href='" + @Url.Action("Edit", new { id = model.IdEmployees }) + "' class='btn btn-warning'><i class='fas fa-edit'></i></a>").Encoded(false);
+        columns.Add(model => $"<a href='" + @Url.Action("Delete", new { id = model.IdEmployees }) + "' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a>").Encoded(false);
+
+    })
+    .Using(GridFilterMode.Header)
+    .Empty("Данные не найдены")
+    .Pageable(pager=>
+    {
+        pager.PageSizes = new Dictionary<int, string> { { 0, "Все" }, { 5, "5" }, { 10, "10" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+    })
+    )
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>

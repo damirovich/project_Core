@@ -1,0 +1,40 @@
+﻿@model SUBDCORE.Models.Ingredients
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Редактирования Ингредиентов</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdIngredients" />
+            <div class="form-group">
+                <label>Продукт</label>
+                <select asp-for="Manufacturing" class="form-control" asp-items="ViewBag.Manufacturing"></select>
+                <span asp-validation-for="Manufacturing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Сырье</label>
+                <select asp-for="RawMaterials" class="form-control" asp-items="ViewBag.RawMaterials"></select>
+                <span asp-validation-for="RawMaterials" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Колличество</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+

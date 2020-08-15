@@ -1,0 +1,51 @@
+﻿@model SUBDCORE.Models.Credits
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h5>Добавление нового кредита</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Наименование Банка</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Сумма кредита</label>
+                <input asp-for="CreaditAmount" class="form-control" />
+                <span asp-validation-for="CreaditAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Процентная ставка</label>
+                <input asp-for="InterestRate" class="form-control" />
+                <span asp-validation-for="InterestRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Срок кредита</label>
+                <input asp-for="CreditTerm" class="form-control" />
+                <span asp-validation-for="CreditTerm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Дата получение</label>
+                <input asp-for="DateOfIssue" class="form-control" />
+                <span asp-validation-for="DateOfIssue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

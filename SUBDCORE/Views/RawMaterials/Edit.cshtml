@@ -1,0 +1,44 @@
+﻿@model SUBDCORE.Models.RawMaterials
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<h4>Редактирование Сырье</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdRawMaterials" />
+            <div class="form-group">
+                <label>Наименование сырье</label>
+                <input asp-for="Names" class="form-control" />
+                <span asp-validation-for="Names" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Единициа измерения</label>
+                <select asp-for="UnitOfMeasure" class="form-control" asp-items="ViewBag.UnitOfMeasure"></select>
+                <span asp-validation-for="UnitOfMeasure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Сумма</label>
+                <input asp-for="Summ" class="form-control" />
+                <span asp-validation-for="Summ" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Колличество</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@model SUBDCORE.Models.Ingredients
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h5>Вы действительно хотите удалить это?</h5>
+<div>
+    <table class="table">
+        <tr>
+            <td>
+                <label>Наименования продукта</label>
+                <h4>
+                    @Html.DisplayFor(model => model.ManufacturingNavigation.Names)
+                </h4>
+            </td>
+            <td>
+                <label>Наименования Сырья</label>
+                <h4>
+                    @Html.DisplayFor(model => model.RawMaterialsNavigation.Names)
+                </h4>
+            </td>
+            <td>
+                <label>Колличество</label>
+                <h4>
+                    @Html.DisplayFor(model => model.Quantity)
+                </h4>
+            </td>
+        </tr>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdIngredients" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+    <div>
+        <a asp-action="Index">Вернуться назад</a>
+    </div>
+</div>

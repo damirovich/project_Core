@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SUBDCORE.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="@Url.Content("~/lib/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/lib/jquery/dist/jquery.min.js")"></script>
+
+<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet" />
+<script src="~/js/mvc-grid/mvc-grid.js"></script>
+@*для icon*@
+<script src="https://kit.fontawesome.com/7bdebba20f.js" crossorigin="anonymous"></script>
+<p>
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-money-check-alt"></i> Выдзать зарплату</a>
+</p>
+@(Html
+    .Grid(Model)
+    .Build(columns=>
+    {
+        columns.Add(models => models.IdEmployeeNavigation.FullName).Titled("Сотрудник").Sortable(true).Filterable(GridFilterCase.Lower);
+        columns.Add(models => models.YearsNavigation.YearsName).Titled("Год").Sortable(true).Filterable(true);
+        columns.Add(models => models.MonthNavigation.MonthName).Titled("Месяц").Sortable(true).Filterable(GridFilterCase.Lower);
+        columns.Add(models => models.Purchased).Titled("Колличество покупок").Sortable(false).Filterable(false);
+        columns.Add(models => models.Sales).Titled("Колличество продаж").Sortable(false).Filterable(false);
+        columns.Add(models => models.Manufacture).Titled("Колличество производств").Sortable(false).Filterable(false);
+        columns.Add(models => models.WorkPerformed).Titled("Общее кол-во работ").Sortable(false).Filterable(false);
+        columns.Add(models => models.InitalProsent).Titled("Процент надбавки").Sortable(false).Filterable(false);
+        columns.Add(models => models.ProsentZp).Titled("Общий процент").Sortable(false).Filterable(false);
+        columns.Add(models => models.InitalSalary).Titled("Договорная зарплата").Sortable(true).Filterable(true);
+        columns.Add(models => models.WagePrem).Titled("Премия").Sortable(false).Filterable(false);
+        columns.Add(models => models.SummaSalary).Titled("Сумма зарплаты").Sortable(true).Filterable(true);
+        columns.Add(models => models.SumSalary).Titled("Выданная зарплата").Sortable(true).Filterable(true);
+        columns.Add(models => models.DataPayroll).Titled("Дата выдачи").Sortable(true).Filterable(true);
+
+        columns.Add(model => $"<a href='" + @Url.Action("Edit", new { id = model.IdSalary }) + "' class='btn btn-warning'><i class='fas fa-edit'></i></a>").Encoded(false);
+        columns.Add(model => $"<a href='" + @Url.Action("Delete", new { id = model.IdSalary }) + "' class='btn btn-danger'><i class='fas fa-trash-alt'></i></a>").Encoded(false);
+
+    }).Using(GridFilterMode.Header)
+    .Empty("Данные не найдены")
+    .Pageable(pager =>
+    {
+        pager.PageSizes = new Dictionary<int, string> { { 0, "Все" }, { 5, "5" }, { 10, "10" } };
+        pager.ShowPageSizes = true;
+        pager.PagesToDisplay = 3;
+        pager.CurrentPage = 1;
+        pager.RowsPerPage = 5;
+    }) )
+<script>
+    document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+</script>

@@ -1,0 +1,55 @@
+﻿@model SUBDCORE.Models.ProductSales
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h3>Оформления заказа</h3>
+<h4>@ViewBag.message</h4>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Наименование продукта</label>
+                <select asp-for="FinishedProduct" class="form-control" asp-items="ViewBag.FinishedProduct"></select>
+            </div>
+            <div class="form-group">
+                <label>Колличество</label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Дата продажи</label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Сотрудник</label>
+                <select asp-for="Employees" class="form-control" asp-items="ViewBag.Employees"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Оформить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // переопределение валидации на стороне клиента
+        $.validator.methods.range = function (value, element, param) {
+            var globalizedValue = value.replace(",", ".");
+            return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+        }
+
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+        }
+    </script>
+}
