@@ -9,9 +9,9 @@ namespace SUBDCORE.Repository
 {
     public class Userrepository : DbContext
     {
-        public Userrepository() :
-            base("PredpriyatieEntities")
-        { }
+        //public Userrepository() :
+        //    base("PredpriyatieEntities")
+        //{ }
         public DbSet<Employees> employees { get; set; }
         public DbSet<Position> roles { get; set; }
     }
