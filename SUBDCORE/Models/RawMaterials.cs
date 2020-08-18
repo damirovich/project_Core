@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SUBDCORE.Models
 {
@@ -12,7 +13,9 @@ namespace SUBDCORE.Models
         }
 
         public short IdRawMaterials { get; set; }
+        [Required(ErrorMessage = "Введие наименование сырье")]
         public string Names { get; set; }
+        [Required(ErrorMessage = "Выберите единица измерения")]
         public int? UnitOfMeasure { get; set; }
         public decimal? Summ { get; set; }
         public double? Quantity { get; set; }

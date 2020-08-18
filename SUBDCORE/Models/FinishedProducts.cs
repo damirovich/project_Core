@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SUBDCORE.Models
 {
@@ -13,7 +14,9 @@ namespace SUBDCORE.Models
         }
 
         public int IdFinishedProducts { get; set; }
+        [Required(ErrorMessage ="Введите наименование продукта")]
         public string Names { get; set; }
+        [Required(ErrorMessage = "Выберите единицы измерения")]
         public int? UnitOfMeasure { get; set; }
         public decimal? Summ { get; set; }
         public double? Quantity { get; set; }

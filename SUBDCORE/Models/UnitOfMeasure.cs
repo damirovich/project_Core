@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SUBDCORE.Models
 {
@@ -12,6 +13,7 @@ namespace SUBDCORE.Models
         }
 
         public int IdUnitOfmeasure { get; set; }
+        [Required(ErrorMessage = "Введите наименование единицы")]
         public string Names { get; set; }
 
         public virtual ICollection<FinishedProducts> FinishedProducts { get; set; }

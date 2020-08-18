@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SUBDCORE.Models
 {
@@ -11,6 +12,7 @@ namespace SUBDCORE.Models
         }
 
         public byte IdPosition { get; set; }
+        [Required(ErrorMessage = "Введите наименование должности")]
         public string Position1 { get; set; }
 
         public virtual ICollection<Employees> Employees { get; set; }

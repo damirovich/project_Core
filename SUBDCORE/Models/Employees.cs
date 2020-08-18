@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SUBDCORE.Models
 {
@@ -14,10 +15,15 @@ namespace SUBDCORE.Models
         }
 
         public short IdEmployees { get; set; }
+        [Required(ErrorMessage ="Введите ФИО сотрудника")]
         public string FullName { get; set; }
+        [Required(ErrorMessage ="Укажите должность")]
         public byte? Position { get; set; }
+        [Required(ErrorMessage ="Введите зарплату")]
         public decimal? Salary { get; set; }
+        [Required(ErrorMessage = "Не укзан адрес проживания")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Укажите номер телефона")]
         public string PhoneNumber { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

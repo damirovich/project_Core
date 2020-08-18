@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/SUBDCORE",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:38760",
       "sslPort": 44349
